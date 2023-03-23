@@ -1,0 +1,41 @@
+{% extends "./base.html" %}
+{% block content %}
+    {% load static %}
+    {% for user, image in search_result %}
+        <!-- Search result list -->
+        <div class="col-8 col-md-4 my-5 mx-auto">
+            <!-- Search result -->
+            <div class="card my-3">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-3 col-md-3">
+                            {% if image != 'userAccounts/user.png' %}
+                                <img src="{{ image }}" class="rounded-circle pull-left" width="100%">
+                            {% else %}
+                                <img src="{% static 'userAccounts/user.png' %}" class="rounded-circle pull-left" width="100%">
+                            {% endif %}
+                        </div>
+                        <div class="col-5 col-md-5 my-auto">
+                            {% if user == request.user %}
+                                <a class="row card-text" href="profile" style="font-size: 22px;">
+                                    {{ user.username }}
+                                </a>
+                            {% else %}
+                                <a class="row card-text" href="friendDetail/{{ user.username }}" style="font-size: 22px;">
+                                    {{ user.username }}
+                                </a>
+                            {% endif %}
+                            
+                            <p class="row" style="font-size: 12px;">{{ user.first_name }} {{ user.last_name }}</p>
+                        </div>
+                        {% if user == request.user %}
+                            <div class="col-4 col-md-4 mt-3">
+                                <p class="btn btn-light border-secondary text-secondary pull-right">This is me</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

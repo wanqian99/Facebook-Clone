@@ -1,0 +1,679 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "SNS_Project REST API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/userpost/{id}/": {
+      "get": {
+        "operationId": "retrieveUserPost",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user post.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPost"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/chatroom/{id}": {
+      "get": {
+        "operationId": "retrieveChatroom",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this chatroom.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Chatroom"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/user/": {
+      "get": {
+        "operationId": "listUserAccounts",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserAccount"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/user/{id}/": {
+      "get": {
+        "operationId": "retrieveUserAccount",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this user account.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAccount"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/friendlist/{id}/": {
+      "get": {
+        "operationId": "retrieveFriend",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this friend.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Friend"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/friendrequest/{id}/": {
+      "get": {
+        "operationId": "retrieveFriendRequest",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this friend request.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FriendRequest"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/createpost/": {
+      "post": {
+        "operationId": "createUserPost",
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPost"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPost"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPost"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserPost"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/createuser/": {
+      "post": {
+        "operationId": "createUser",
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserPost": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "pk": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string",
+                "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "pattern": "^[\\w.@+-]+\\z",
+                "maxLength": 150
+              },
+              "first_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "last_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 10000
+          },
+          "content_image": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "user",
+          "content"
+        ]
+      },
+      "Chatroom": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "chatroom": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "user": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pk": {
+                  "type": "integer",
+                  "readOnly": true
+                },
+                "username": {
+                  "type": "string",
+                  "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                  "pattern": "^[\\w.@+-]+\\z",
+                  "maxLength": 150
+                },
+                "first_name": {
+                  "type": "string",
+                  "maxLength": 150
+                },
+                "last_name": {
+                  "type": "string",
+                  "maxLength": 150
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "maxLength": 254
+                },
+                "password": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "username",
+                "password"
+              ]
+            }
+          }
+        },
+        "required": [
+          "chatroom",
+          "user"
+        ]
+      },
+      "UserAccount": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "pk": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string",
+                "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "pattern": "^[\\w.@+-]+\\z",
+                "maxLength": 150
+              },
+              "first_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "last_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          },
+          "phone_number": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 20
+          },
+          "dob": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          }
+        },
+        "required": [
+          "user"
+        ]
+      },
+      "Friend": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "current_user": {
+            "type": "object",
+            "properties": {
+              "pk": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string",
+                "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "pattern": "^[\\w.@+-]+\\z",
+                "maxLength": 150
+              },
+              "first_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "last_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "friends": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pk": {
+                  "type": "integer",
+                  "readOnly": true
+                },
+                "username": {
+                  "type": "string",
+                  "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                  "pattern": "^[\\w.@+-]+\\z",
+                  "maxLength": 150
+                },
+                "first_name": {
+                  "type": "string",
+                  "maxLength": 150
+                },
+                "last_name": {
+                  "type": "string",
+                  "maxLength": 150
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "maxLength": 254
+                },
+                "password": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "username",
+                "password"
+              ]
+            }
+          }
+        },
+        "required": [
+          "current_user",
+          "friends"
+        ]
+      },
+      "FriendRequest": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "sender": {
+            "type": "object",
+            "properties": {
+              "pk": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string",
+                "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "pattern": "^[\\w.@+-]+\\z",
+                "maxLength": 150
+              },
+              "first_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "last_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "receiver": {
+            "type": "object",
+            "properties": {
+              "pk": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string",
+                "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+                "pattern": "^[\\w.@+-]+\\z",
+                "maxLength": 150
+              },
+              "first_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "last_name": {
+                "type": "string",
+                "maxLength": 150
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              "password": {
+                "type": "string",
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "username",
+              "password"
+            ]
+          },
+          "pending": {
+            "type": "boolean"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "sender",
+          "receiver"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "pk": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string",
+            "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+            "pattern": "^[\\w.@+-]+\\z",
+            "maxLength": 150
+          },
+          "first_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "last_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      }
+    }
+  }
+}

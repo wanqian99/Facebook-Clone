@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+    {% if user.is_authenticated %}
+    <div class="row mx-auto my-5">
+        <div class="col-md-5">
+            <h4 class="text-center">Chatrooms:</h4>
+            {% if chatroom %}
+                {% for room in chatroom %}
+                    <div class="card col-md-6 mb-3 mx-auto">
+                        <div class="card-body text-center border-dark">
+                            <a href="{{room.chatroom}}">{{room.chatroom}}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-secondary d-flex flex-row justify-content-center p-4">
+                    <p>No chatroom available</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-7">
+            <form method="post">
+                {% csrf_token %}
+                <label form="chatroom">Create a new chatroom:</label>
+                <div class="row form-group">
+                    <div class="col-md-8">
+                        {{chatroomForm.chatroom}}
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-secondary text-right" id="chatroom_submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}

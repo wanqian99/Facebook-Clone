@@ -1,0 +1,256 @@
+{% extends "./base.html" %}
+{% block content %}
+    <!-- show posts only is user is authenticated -->
+    {% if request.user.is_authenticated %}
+        <div class="col-md-5 mx-auto my-5">
+            
+            <div class="card mx-auto my-5">
+                <!-- Upload post form -->
+                <form method="post" action="/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="card-header bg-secondary text-light">
+                        <!-- upload image -->
+                        <div class="form-group">
+                            <label for="postImage">Select an image to upload...</label>
+                            <input type="file" class="form-control-file" name="postImage" oninput="addImage(this)">
+                        </div>
+                        <!-- preview upload image -->
+                        <div class="image-area my-4">
+                            <img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form class="form-inline my-2 my-lg-0">
+                            <!-- textbox to enter content -->
+                            <textarea class="form-control" placeholder="Write something..." style="min-width: 100%" rows="10" name="content"></textarea>
+                            <span class="input-group-append">
+                                <button class="btn btn-secondary text-light my-2 my-sm-2" type="submit">
+                                    Enter
+                                </button>
+                            </span>
+                        </form>                
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- display users' post and friends' post (if user has friends) -->
+            {% for post in posts %}
+                <div class="card mx-auto my-5">
+                    <div class="card-header bg-secondary text-light">
+                        <!-- if length of profile is more than 1, that means user has friends -->
+                        {% if profile|length > 1 %}
+                            <!-- loop through each profile -->
+                            {% for p in profile %}
+                                <!-- check if the username if equals to post's username -->
+                                {% if p.user.username == post.user.username %}
+                                    <!-- if yes, show the profile image -->
+                                    <img src="/media/{{ p.image }}" class="rounded-circle profile">
+                                {% endif %}
+                            {% endfor %}
+                        <!-- if user has no friends, simply display the profile image 
+                        of current user for all posts at the gome page -->
+                        {% else %}
+                            <img src="/media/{{ profile.image }}" class="rounded-circle profile">
+                        {% endif %}
+                        
+                        &nbsp
+                        {{post.user.username}}
+                    </div>
+                    <!-- if post contains content_image -->
+                    {% if post.content_image %}
+                        <img class="card-img-top" src="media/{{post.content_image}}" alt="Card image cap">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{post.content}}</p>
+                        
+                        <!-- Post's Likes Icon -->
+                        <a href="#">
+                            <i class="fa-solid fa-heart post_icons"></i>
+                            <span>1 Likes</span>
+                        </a>
+                        
+                        &nbsp&nbsp
+            
+                        <!-- Post's Comments Icon -->
+                        <a href="#inputComments1" data-toggle="collapse">
+                            <i class="fa-solid fa-message post_icons"></i>
+                            <span>1 Comments</span>
+                        </a>
+                    
+                        <div class="row">
+                            <!-- Post's View Comments Link -->
+                            <a href="#collapseComments1" data-toggle="collapse" class="text-secondary col-md-7">
+                                <p>View comments</p>
+                            </a>
+                            <!-- Post's date and time -->
+                            <p class="col-md-5 text-right text-secondary" style="font-size: 14px;">{{post.timestamp}}</p>
+                        </div>
+                        
+            
+                        <!-- Post's View Comments -->
+                        <div class="collapse" id="collapseComments1">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle profile">
+                            &nbsp
+                            some comments some comments some comments
+                        </div>
+            
+                        <!-- Post's Comments Input Box -->
+                        <div class="collapse" id="inputComments1">
+                            <div class="input-group my-2">
+                                <input type="text" class="form-control" placeholder="Enter a comment..." aria-label="Enter a comment..." aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            
+            <!-- <div class="card mx-auto my-5">
+                <div class="card-header bg-secondary text-light">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle profile">
+                    &nbsp
+                    Username
+                </div>
+                <img class="card-img-top" src="https://cic.lk/wp-content/uploads/2016/05/placeholder-image.png" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    
+                    Post's Likes Icon
+                    <a href="#">
+                        <i class="fa-solid fa-heart post_icons"></i>
+                        <span>1 Likes</span>
+                    </a>
+                    
+                    &nbsp&nbsp
+        
+                    Post's Comments Icon
+                    <a href="#inputComments1" data-toggle="collapse">
+                        <i class="fa-solid fa-message post_icons"></i>
+                        <span>1 Comments</span>
+                    </a>
+                
+                    Post's View Comments Link
+                    <a href="#collapseComments1" data-toggle="collapse" class="text-secondary">
+                        <p>View comments</p>
+                    </a>
+        
+                    Post's View Comments
+                    <div class="collapse" id="collapseComments1">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle profile">
+                        &nbsp
+                        some comments some comments some comments
+                    </div>
+        
+                    Post's Comments Input Box
+                    <div class="collapse" id="inputComments1">
+                        <div class="input-group my-2">
+                            <input type="text" class="form-control" placeholder="Enter a comment..." aria-label="Enter a comment..." aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="card mx-auto my-5">
+                <div class="card-header bg-secondary text-light">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle profile">
+                    &nbsp
+                    Username
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    
+                    Post's Likes Icon
+                    <a href="#">
+                        <i class="fa-solid fa-heart post_icons"></i>
+                        <span>1 Likes</span>
+                    </a>
+                    
+                    &nbsp&nbsp
+        
+                    Post's Comments Icon
+                    <a href="#inputComments2" data-toggle="collapse">
+                        <i class="fa-solid fa-message post_icons"></i>
+                        <span>1 Comments</span>
+                    </a>
+                
+                    Post's View Comments Link
+                    <a href="#collapseComments2" data-toggle="collapse" class="text-secondary">
+                        <p>View comments</p>
+                    </a>
+        
+                    Post's View Comments
+                    <div class="collapse" id="collapseComments2">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle profile">
+                        &nbsp
+                        some comments some comments some comments
+                    </div>
+        
+                    Post's Comments Input Box
+                    <div class="collapse" id="inputComments2">
+                        <div class="input-group my-2">
+                            <input type="text" class="form-control" placeholder="Enter a comment..." aria-label="Enter a comment..." aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    <!-- prompt the user to login or register if user is not authenticated -->
+    {% else %}
+        <div class="container text-center my-5 py-5" style="min-height: 300px;">
+            <h2>Welcome to UBook</h2>
+            <div class="my-5">
+                <p>New to Ubook?<a href="register"> Register</a> now!</p>
+            <p>Have an account?<a href="login"> Login</a> here!</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <style>
+        .post_icons {
+            font-size: 25px;
+            margin: 5px;
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+
+        #collapseComments {
+            margin-bottom: 15px;
+        }
+
+        /* .card {
+            max-width: 70%;
+            min-width: 25rem;
+        } */
+
+        #imageResult {
+            max-width: 20rem;
+        }
+    </style>
+
+    <script>
+        // allows user to preview the input image before uploading a post
+        function addImage(inputImage) {
+            if (inputImage.files && inputImage.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var image = e.target.result
+                    var imageField = document.getElementById('imageResult')
+                    imageField.src = image
+                };
+                reader.readAsDataURL(inputImage.files[0]);
+            }
+        }
+    </script>
+    
+{% endblock content %}

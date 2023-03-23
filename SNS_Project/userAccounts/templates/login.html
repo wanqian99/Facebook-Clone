@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+{% block content %}
+    {% load static %}
+    <div class="col-md-6 mx-auto my-5">
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                Login
+            </div>
+            <div class="card-body">
+                <img class="rounded-circle img-fluid mx-auto my-3 d-block" width="30%" src="{% static 'userAccounts/user.png' %}">
+                <form id="login_form" method="post" action="login" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Enter Login Username -->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="username">Username</label>
+                        <input class="form-control" id="username" name="username" type="text" placeholder="Enter your username">
+                    </div>
+                    <!-- Enter Login Password -->
+                    <div class="mb-3">
+                        <label class="small mb-1" for="password">Password</label>
+                        <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password">
+                    </div>
+                    <!-- Login button -->
+                    <div class="row">
+                        <div class="col-9 col-md-10 my-auto">
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        <div class="col-3 col-md-2">
+                            <!-- <a class="btn btn-dark px-2" role="button" href="/">Lets go!</a> -->
+                            <input class="btn btn-dark text-light px-2" type="submit" name="submit" value="Lets go!" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

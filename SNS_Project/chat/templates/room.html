@@ -1,0 +1,63 @@
+{% extends "./base.html" %}
+{% block content %}
+    {% load static %}
+        <div class="col-md-7 mx-auto my-5">
+            <div class="d-flex justify-content-between">
+                <h4>Chatroom: &nbsp&nbsp&nbsp {{chatroom_name}}</h4>
+                <form method="post" action="deleteChatroom/{{chatroom_name}}">
+                    {% csrf_token %}
+                    <button class="btn btn-secondary" type="submit">Delete chatroom</button>
+                </form>
+            </div>
+            <hr>
+            <br>
+            <p>You are logged in as
+                <span id="user">{{user.username}}</span>
+            </p>
+            <textarea class="bg-secondary text-light" id="chat-log" cols="80" rows="15"></textarea><br>
+            <input class=" mr-3 mt-2" id="chat-message-input" type="text" size="70">
+            <input id="chat-message-submit" class="btn btn-secondary text-right px-4" type="button" value="Send" b>
+           
+        </div>
+        {{ chatroom_name|json_script:"room-name" }}
+    
+
+        <script> // code from django tutorial, chat example
+            const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    
+            // connect web server
+            const chatSocket = new WebSocket('ws://'+ window.location.host+ '/ws/chat/'+roomName+ '/'
+            );
+
+            chatSocket.onmessage = function(e) {
+                console.log(user)
+                const data = JSON.parse(e.data);
+                document.querySelector('#chat-log').value += (data.message + '\n');
+            };
+
+            chatSocket.onclose = function(e) {
+                console.error('Chat socket closed unexpectedly');
+            };
+
+            document.querySelector('#chat-message-input').focus();
+            document.querySelector('#chat-message-input').onkeyup = function(e) {
+                if (e.keyCode === 13) {  // enter, return
+                    document.querySelector('#chat-message-submit').click();
+                }
+            };
+
+            document.querySelector('#chat-message-submit').onclick = function(e) {
+                const messageInputDom = document.querySelector('#chat-message-input');
+                const message = messageInputDom.value;
+
+                // get the user who send the message
+                const user = document.getElementById('user').textContent
+
+                // send the message to web server
+                chatSocket.send(JSON.stringify({
+                    'message': user + ': ' + message
+                }));
+                messageInputDom.value = '';
+            };
+        </script>
+{% endblock content %}
