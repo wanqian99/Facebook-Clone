@@ -27,16 +27,16 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
   * password: wanwan 
 
 * Account 2:
-* * username: wan2     
-* * password: wan2
+  * username: wan2     
+  * password: wan2
 
 * Account 3:
-* * username: wan3     
-* * password: wan3
+  * username: wan3     
+  * password: wan3
 
 * Account 4:
-* * username: wan4     
-* * password: wan4
+  * username: wan4     
+  * password: wan4
 
 ### To run the test:
 * python3 manage.py test
