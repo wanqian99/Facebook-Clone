@@ -44,24 +44,24 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
 ### Refer to url list:
 
 #### 1) SNS Project url:
-<kbd><img src="https://user-images.githubusercontent.com/62084317/227109897-230de337-e8e2-49b7-8d74-69af33fedf0d.png" width="800"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/62084317/227109897-230de337-e8e2-49b7-8d74-69af33fedf0d.png" width="500"></kbd>
 <br><br><br>
 
 #### 2) User Accounts url:
-<kbd><img src="https://user-images.githubusercontent.com/62084317/227110193-b6bd39b2-e11b-4b7e-8286-eca950d041bf.png" width="800"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/62084317/227110193-b6bd39b2-e11b-4b7e-8286-eca950d041bf.png" width="500"></kbd>
 <br><br><br>
 
 
 #### 3) User Posts url:
-<kbd><img src="https://user-images.githubusercontent.com/62084317/227110291-e32d3fd6-db62-4894-acde-324366fa833d.png" width="800"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/62084317/227110291-e32d3fd6-db62-4894-acde-324366fa833d.png" width="500"></kbd>
 <br><br><br>
 
 
 #### 4) Friends url:
-<kbd><img src="https://user-images.githubusercontent.com/62084317/227110332-307d1942-99ac-4392-a969-255f795d3ccd.png" width="800"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/62084317/227110332-307d1942-99ac-4392-a969-255f795d3ccd.png" width="500"></kbd>
 <br><br><br>
 
 
 #### 5) Chat url:
-<kbd><img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="800"></kbd>
+<kbd><img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500"></kbd>
 <br><br><br>
