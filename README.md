@@ -16,11 +16,12 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
 7) Base url to access UBook: http://127.0.0.1:8000/
 
 ### Test Accounts:
-##### The superuser credentials are: 
+#### The superuser credentials are: 
   * username: admin
-  * email: admin@gmail.com password: password
+  * email: admin@gmail.com
+  * password: password
   
-##### Standard test accounts: 
+#### Standard test accounts: 
 * username: wanwan
 * password: wanwan 
 
