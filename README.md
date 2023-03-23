@@ -23,8 +23,8 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
   
 #### Standard test accounts: 
 * Account 1:
-* * username: wanwan   
-* * password: wanwan 
+  * username: wanwan   
+  * password: wanwan 
 
 * Account 2:
 * * username: wan2     
