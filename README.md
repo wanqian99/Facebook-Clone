@@ -22,10 +22,10 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
   * password: password
   
 #### Standard test accounts: 
-* username: wanwan   password: wanwan 
-* username: wan2     password: wan2
-* username: wan3     password: wan3
-* username: wan4     password: wan4
+* username: wanwan   * password: wanwan 
+* username: wan2     * password: wan2
+* username: wan3     * password: wan3
+* username: wan4     * password: wan4
 
 ### To run the test:
 * python3 manage.py test
