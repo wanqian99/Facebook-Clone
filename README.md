@@ -1,7 +1,7 @@
 # Facebook-Clone
 Uol Advanced Web Development CM3035 Final
 
-This is a social networking application created with Python and Django, that allows user creation, authentication, adding of friends and real-time chat.
+This is a social networking application created with Python, Django and SQLite, that allows user creation, authentication, adding of friends and real-time chat.
 My sns app is called UBook, an app that allows users to socialize and keep their friends updated. It is a responsive site whereby the navigation bar and 
 the contents resize according to the device’s size. The styling of the application is done with bootstrap4, with the addition of my own custom styles as 
 well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
