@@ -62,3 +62,13 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
 #### 5) Chat url:
 <kbd><img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500"></kbd>
 <br><br>
+
+
+### Screenshots:
+<kbd>
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
+</kbd>
+
+<br><br>
