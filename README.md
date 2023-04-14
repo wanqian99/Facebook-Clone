@@ -66,9 +66,9 @@ well. A detailed explanation can be found at "report/AWD_Final_Report.pdf".
 
 ### Screenshots:
 <kbd>
-    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
-    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
-    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="500">
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="400">
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="400">
+    <img src="https://user-images.githubusercontent.com/62084317/227109754-0870430d-1ef1-4110-b1d0-1481a195e7a9.png" width="400">
 </kbd>
 
 <br><br>
